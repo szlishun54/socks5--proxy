@@ -1,5 +1,20 @@
 # socks5--proxy
  A SOCKS5 server and a forwarding proxy server are connected.
+ 
+ 🌐 Custom SOCKS5 Proxy Architecture
+Scenario: A SOCKS5 client connects to a SOCKS5 server, which then transfers the request to a dedicated forwarding server. The forwarding server is responsible for making the final outbound request to the internet, thus acting as the ultimate proxy.
+
+🎯 Purpose (Advantages)
+Obfuscation/Evasion: Since this is a custom-written solution, the packet characteristics of this program should be unknown to the Great Firewall (GFW).
+
+Encryption: All data is encrypted using AES (Advanced Encryption Standard).
+
+🛠️ Usage (Implementation Steps)
+Start Forwarding Server: Run the command go run forwardServer.go on the chosen internet forwarding server, ensuring that port 1081 is open.
+
+Configure & Run SOCKS5 Server: Modify the socks5V2.go file. In the header section, change the FORWARD_SERVER_ADDR variable to the IP address of the forwarding server. Then, run the command go run socks5V2.go on your local machine.
+
+Configure Client (macOS): On your macOS machine, navigate to System Settings -> Wi-Fi -> Details -> Proxies -> and enter 127.0.0.1 with port 1080 for the SOCKS5 proxy setting.
 
 
 
